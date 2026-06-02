@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Portfolio | Nhập môn Công nghệ số & AI</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Trang web Portfolio kỹ thuật số cá nhân tổng hợp các sản phẩm và bài tập thực hành môn học Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo.">
+  <meta name="keywords" content="Portfolio, Công nghệ số, Trí tuệ nhân tạo, AI, Bài tập lớn, Sinh viên">
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    /* Đảm bảo modal hiển thị */
+    #exercise-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+    }
+
+    #exercise-modal.active {
+      display: flex !important;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 900px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem;
+      border-bottom: 1px solid #e5e7eb;
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      flex: 1;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 2.5rem;
+      color: #6b7280;
+      cursor: pointer;
+      padding: 0;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+
+    .modal-close:hover {
+      background-color: #f3f4f6;
+      color: #1f2937;
+    }
+
+    .modal-close:active {
+      transform: scale(0.95);
+    }
+
+    .modal-body {
+      padding: 2rem;
+    }
+
+    .modal-section {
+      margin-bottom: 2rem;
+    }
+
+    .modal-section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0066ff;
+      margin-bottom: 1rem;
+      border: none;
+      padding: 0;
+    }
+
+    .pdf-info-box {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background-color: #f9fafb;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid #0066ff;
+      margin-bottom: 1.5rem;
+    }
+
+    .pdf-info-box i {
+      color: #0066ff;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .pdf-viewer {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+    }
+
+    .pdf-fallback-msg {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background-color: #f9fafb;
+      padding: 3rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      min-height: 400px;
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <!-- BACKGROUND GLOW ORBS -->
+  <div class="bg-glow orb-1"></div>
+  <div class="bg-glow orb-2"></div>
+  <div class="bg-glow orb-3"></div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="#intro" class="logo" id="brand-logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>DIGITAL PORTFOLIO</span>
+      </a>
+      
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#intro" class="nav-link active" data-target="intro-section" id="nav-intro"><i class="fa-solid fa-user-tie"></i> Giới thiệu</a></li>
+          <li><a href="#exercises" class="nav-link" data-target="exercises-section" id="nav-exercises"><i class="fa-solid fa-folder-open"></i> Bài tập dự án</a></li>
+          <li><a href="#reflection" class="nav-link" data-target="reflection-section" id="nav-reflection"><i class="fa-solid fa-chart-line"></i> Tổng kết</a></li>
+        </ul>
+      </nav>
+      
+
+    </div>
+  </header>
+
+  <!-- MAIN APP CONTENTS -->
+  <main class="main-content">
+    <div class="container">
+      
+      <!-- ==========================================
+           TRANG GIỚI THIỆU (INTRO SECTION)
+           ========================================== -->
+      <section id="intro-section" class="page-section active">
+        <div class="about-hero reveal">
+          <div class="about-avatar-wrapper">
+            <img src="assets/avt.jpg" alt="Ảnh chân dung cá nhân" class="about-avatar" id="profile-avatar">
+          </div>
+          
+          <div class="about-info">
+            <div class="badge-group">
+              <span class="badge">Lớp: K70 E-CE6</span>
+              <span class="badge">MSV: 25020710</span>
+              <span class="badge">Khoa Điện tử viên thông</span>
+              <span class="badge">UET-VNU</span>
+            </div>
+            
+            <h1 class="section-title">Xin chào, tôi là Trần Ngọc Minh</h1>
+            <p class="about-bio">
+              Chào mừng bạn đến với Portfolio kỹ thuật số của tôi. Đây là nơi lưu trữ, hệ thống hóa và trình bày kết quả thực hành các kỹ năng thiết yếu trong môn học <strong>"Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo"</strong>. Qua trang web này, tôi hy vọng có thể chứng minh năng lực tự học, làm việc nhóm và ứng dụng AI có trách nhiệm trong nghiên cứu khoa học.
+            </p>
+            
+            <div class="profile-meta-grid">
+              <div class="meta-item">
+                <div class="meta-icon"><i class="fa-solid fa-book-open"></i></div>
+                <div class="meta-details">
+                  <h4>Ngành học</h4>
+                  <p id="profile-major">Kỹ thuật máy tính</p>
+                </div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-icon"><i class="fa-solid fa-heart"></i></div>
+                <div class="meta-details">
+                  <h4>Sở thích cá nhân</h4>
+                  <p id="profile-hobbies">Chơi game,ngủ và nấu ăn
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Timeline Learning Goals -->
+        <div class="timeline-section reveal">
+          <h2 class="timeline-title"><i class="fa-solid fa-bullseye"></i> Định hướng & Mục tiêu học tập</h2>
+          <div class="timeline">
+            
+            <div class="timeline-item reveal">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">Giai đoạn hiện tại (Học kỳ II - 2026)</span>
+                <h3>Tối ưu hóa Kỹ năng nghiên cứu & Ứng dụng AI</h3>
+                <p>Ứng dụng các công cụ Generative AI để tra cứu, bóc tách và tổng hợp nhanh tài liệu học thuật chuyên sâu về kiến trúc vi điều khiển và firmware. Tận dụng AI để hỗ trợ gỡ lỗi logic, phân tích thuật toán và tối ưu hóa cấu trúc mã nguồn C/C++ cũng như các kịch bản hệ thống.</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item reveal">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">Giai đoạn tiếp theo (Cuối năm 2026)</span>
+                <h3>Đào sâu chuyên môn Lập trình Nhúng</h3>
+                <p>Tập trung làm chủ hoàn toàn các kỹ năng xử lý cấu trúc dữ liệu, quản lý bộ nhớ cấp thấp (con trỏ, bitwise, cấp phát động) với ngôn ngữ C/C++. Đẩy mạnh thực hành thông qua việc tự xây dựng các dự án mô phỏng điều khiển ngoại vi và hệ thống tương tác phần cứng - phần mềm thực tế.</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item reveal">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">Định hướng tương lai (2027 - 2028)</span>
+                <h3>Phát triển Hệ thống Nhúng cho Ô tô Tự hành</h3>
+                <p>Nghiên cứu chuyên sâu về kiến trúc hệ thống, firmware và các tiêu chuẩn trong lĩnh vực Automotive. Tích hợp các thuật toán điều khiển phức tạp và tối ưu hóa tài nguyên trên nền tảng vi điều khiển nhằm trực tiếp giải quyết các bài toán vận hành của xe tự lái.</p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+        <!-- Portfolio Purpose -->
+        <div class="portfolio-purpose reveal">
+          <i class="fa-solid fa-lightbulb"></i>
+          <h3>Mục tiêu của Portfolio kỹ thuật số này</h3>
+          <p>
+            Không chỉ đơn thuần là một bài tập học tập tích lũy, Portfolio này đóng vai trò như một thư viện số hóa lưu giữ minh chứng cho từng kỹ năng số mà tôi đã làm chủ. Đây cũng là công cụ giúp tôi tự phản chiếu năng lực công nghệ của bản thân, từ đó liên tục nâng cấp kỹ năng để sẵn sàng cho môi trường làm việc số đầy biến động.
+          </p>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           TRANG BÀI TẬP DỰ ÁN (EXERCISES SECTION)
+           ========================================== -->
+      <section id="exercises-section" class="page-section">
+        <div class="section-header reveal">
+          <h1 class="section-title"><i class="fa-solid fa-cubes"></i> Bài tập dự án cá nhân</h1>
+          <p class="section-subtitle">Tổng hợp kết quả học tập từ Bài 1 đến Bài 7 môn Nhập môn Công nghệ số và AI</p>
+        </div>
+        
+        <div class="exercises-grid" id="exercises-grid">
+          <!-- Các Card Bài tập sẽ được JavaScript tự động tạo hoặc hiển thị tĩnh để tối ưu SEO -->
+          
+          <!-- Bài 1 -->
+          <article class="exercise-card reveal tilt-card" data-id="1">
+            <div class="exercise-img-wrapper">
+              <span class="exercise-badge">Bài tập 1</span>
+              <img src="assets/exercise1.png" alt="Minh họa cấu trúc thư mục" class="exercise-img">
+            </div>
+            <div class="exercise-body">
+              <h3>Bài 1: Thao tác cơ bản với tệp tin và thư mục</h3>
+              <div class="exercise-objective">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>Thiết lập cấu trúc thư mục ThucHanh_TranNgocMinh và các thao tác quản trị tệp tin.</span>
+              </div>
+              <p class="exercise-summary">
+                Thực hành thiết lập thư mục gốc, tạo và đổi tên tệp tin, phân chia các thư mục con TaiLieu, sao chép và di chuyển tệp, quản lý xóa và khôi phục dữ liệu từ Recycle Bin trên Windows.
+              </p>
+            </div>
+            <div class="exercise-footer">
+              <div class="exercise-tags">
+                <span class="exercise-tag">Hệ điều hành</span>
+                <span class="exercise-tag">Quản lý File</span>
+              </div>
+              <button class="btn btn-primary btn-view-detail" data-id="1">
+                Xem Chi Tiết <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+          
+          <!-- Bài 2 -->
+          <article class="exercise-card reveal tilt-card" data-id="2">
+            <div class="exercise-img-wrapper">
+              <span class="exercise-badge">Bài tập 2</span>
+              <img src="assets/exercise2.png" alt="Tìm kiếm học thuật nâng cao" class="exercise-img">
+            </div>
+            <div class="exercise-body">
+              <h3>Bài 2: Tìm kiếm và đánh giá thông tin học thuật</h3>
+              <div class="exercise-objective">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>Khai thác tài liệu về tác động của AI đến hành vi mua sắm trực tuyến của Gen Z tại Việt Nam.</span>
+              </div>
+              <p class="exercise-summary">
+                Ứng dụng toán tử tìm kiếm chuyên sâu trên Google Scholar để thu thập 11 nguồn tài liệu học thuật. Thực hành ma trận đánh giá độ tin cậy theo thang CRAAP và định dạng Harvard.
+              </p>
+            </div>
+            <div class="exercise-footer">
+              <div class="exercise-tags">
+                <span class="exercise-tag">Tìm kiếm</span>
+                <span class="exercise-tag">Học thuật</span>
+              </div>
+              <button class="btn btn-primary btn-view-detail" data-id="2">
+                Xem Chi Tiết <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+          
+          <!-- Bài 3 -->
+          <article class="exercise-card reveal tilt-card" data-id="3">
+            <div class="exercise-img-wrapper">
+              <span class="exercise-badge">Bài tập 3</span>
+              <img src="assets/exercise3.png" alt="Viết prompt hiệu quả" class="exercise-img">
+            </div>
+            <div class="exercise-body">
+              <h3>Bài 3: Viết Prompt hiệu quả cho các tác vụ học tập</h3>
+              <div class="exercise-objective">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>Tối ưu hóa viết prompt cho các tác vụ tóm tắt AI, thuyết tương đối và câu hỏi lịch sử.</span>
+              </div>
+              <p class="exercise-summary">
+                Thực nghiệm so sánh các cấp độ Prompt (Cơ bản, Cải tiến, Nâng cao: CoT, đóng vai) trên ChatGPT-4o. Tổng hợp bộ nguyên tắc viết prompt hiệu quả C.R.E.A.T.E.
+              </p>
+            </div>
+            <div class="exercise-footer">
+              <div class="exercise-tags">
+                <span class="exercise-tag">Prompt Eng</span>
+                <span class="exercise-tag">Generative AI</span>
+              </div>
+              <button class="btn btn-primary btn-view-detail" data-id="3">
+                Xem Chi Tiết <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+          
+          <!-- Bài 4 -->
+          <article class="exercise-card reveal tilt-card" data-id="4">
+            <div class="exercise-img-wrapper">
+              <span class="exercise-badge">Bài tập 4</span>
+              <img src="assets/exercise4.png" alt="Công cụ quản lý dự án nhóm" class="exercise-img">
+            </div>
+            <div class="exercise-body">
+              <h3>Bài 4: Sử dụng công cụ hợp tác trực tuyến</h3>
+              <div class="exercise-objective">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>Ứng dụng của AI&CNS trong đời sống.</span>
+              </div>
+              <p class="exercise-summary">
+                Đóng vai trò thành viên phụ trách nội dung. Quản trị tiến trình qua sơ đồ Kanban trên Trello, soạn thảo văn bản cộng tác trên Google Docs/Sheets và đồng bộ dữ liệu qua Google Drive.
+              </p>
+            </div>
+            <div class="exercise-footer">
+              <div class="exercise-tags">
+                <span class="exercise-tag">Hợp tác số</span>
+                <span class="exercise-tag">Quản trị dự án</span>
+              </div>
+              <button class="btn btn-primary btn-view-detail" data-id="4">
+                Xem Chi Tiết <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+          
+          <!-- Bài 5 -->
+          <article class="exercise-card reveal tilt-card" data-id="5">
+            <div class="exercise-img-wrapper">
+              <span class="exercise-badge">Bài tập 5</span>
+              <img src="assets/exercise5.png" alt="Sản phẩm AI tạo sinh" class="exercise-img">
+            </div>
+            <div class="exercise-body">
+              <h3>Bài 5: AI tạo sinh hỗ trợ sáng tạo nội dung số</h3>
+              <div class="exercise-objective">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>Sản xuất bài viết blog và thiết kế ấn phẩm truyền thông số hoàn chỉnh.</span>
+              </div>
+              <p class="exercise-summary">
+                Biên soạn bài viết blog 'Từ gõ Google đến hỏi AI: Gen Z đang học thế nào?' bằng Google Gemini, tự động tạo ảnh minh họa 3D bằng Copilot DALL-E 3 và dàn trang thiết kế trên Canva.
+              </p>
+            </div>
+            <div class="exercise-footer">
+              <div class="exercise-tags">
+                <span class="exercise-tag">Sáng tạo số</span>
+                <span class="exercise-tag">Gen AI</span>
+              </div>
+              <button class="btn btn-primary btn-view-detail" data-id="5">
+                Xem Chi Tiết <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+          
+          <!-- Bài 6 -->
+          <article class="exercise-card reveal tilt-card" data-id="6">
+            <div class="exercise-img-wrapper">
+              <span class="exercise-badge">Bài tập 6</span>
+              <img src="assets/exercise6.png" alt="Đạo đức và sử dụng AI có trách nhiệm" class="exercise-img">
+            </div>
+            <div class="exercise-body">
+              <h3>Bài 6: An toàn và sử dụng AI có trách nhiệm</h3>
+              <div class="exercise-objective">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>Nghiên cứu chính sách sử dụng AI và thiết lập nguyên tắc liêm chính cá nhân.</span>
+              </div>
+              <p class="exercise-summary">
+                Thảo luận ranh giới giữa trợ lý và gian lận học thuật qua bài luận Xã hội học Fast Fashion. Thiết lập 7 quy tắc cá nhân và thiết kế Infographic về ranh giới đạo đức dùng AI.
+              </p>
+            </div>
+            <div class="exercise-footer">
+              <div class="exercise-tags">
+                <span class="exercise-tag">Đạo đức AI</span>
+                <span class="exercise-tag">Liêm chính</span>
+              </div>
+              <button class="btn btn-primary btn-view-detail" data-id="6">
+                Xem Chi Tiết <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+          
+        </div>
+        <!-- Bài 7 -->
+         <article class="exercise-card reveal tilt-card" data-id="7">
+            <div class="exercise-img-wrapper">
+              <span class="exercise-badge">Bài tập 7</span>
+              <img src="assets/exercise7.png" alt="Phân tích tài liệu với trợ lý nghiên cứu AI" class="exercise-img">
+            </div>
+            <div class="exercise-body">
+              <h3>Bài 7: Phân tích tài liệu với trợ lý nghiên cứu AI</h3>
+              <div class="exercise-objective">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>Tổng hợp và đánh giá toàn diện quá trình học tập và phát triển kỹ năng.</span>
+              </div>
+              <p class="exercise-summary">
+                Tổng kết các bài tập đã hoàn thành, phân tích điểm mạnh, điểm yếu và đề xuất hướng cải thiện cho quá trình học tập trong tương lai.
+              </p>
+            </div>
+            <div class="exercise-footer">
+              <div class="exercise-tags">
+                <span class="exercise-tag">Đạo đức AI</span>
+                <span class="exercise-tag">Liêm chính</span>
+              </div>
+              <button class="btn btn-primary btn-view-detail" data-id="7">
+                Xem Chi Tiết <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+          
+        </div>
+      </section>
+
+      <!-- ==========================================
+           TRANG TỔNG KẾT (REFLECTION SECTION)
+           ========================================== -->
+      <section id="reflection-section" class="page-section">
+        <div class="section-header reveal">
+          <h1 class="section-title"><i class="fa-solid fa-feather"></i> Báo cáo tổng kết dự án</h1>
+          <p class="section-subtitle">Suy ngẫm và đánh giá quá trình xây dựng Portfolio kỹ thuật số cá nhân</p>
+        </div>
+        
+        <div class="reflection-intro reveal">
+          <p class="reflection-text">
+            Quá trình hoàn thiện trang Portfolio này là một hành trình tự nhìn nhận sâu sắc. Thay vì chỉ làm các bài tập rời rạc, việc hệ thống hóa lại toàn bộ sản phẩm học tập từ Bài 1 đến Bài 7 giúp tôi kết nối các khối kiến thức lại với nhau, biến lý thuyết công nghệ khô khan thành sản phẩm ứng dụng thực tiễn có khả năng tương tác.
+          </p>
+        </div>
+        
+        <div class="reflection-grid">
+          
+          <!-- Điểm tâm đắc / Highlights -->
+          <div class="reflection-card highlights reveal">
+            <h3 class="card-title highlight-title">
+              <i class="fa-solid fa-circle-check"></i> Điểm tâm đắc nhất
+            </h3>
+            <ul class="reflection-list">
+              <li>
+                <i class="fa-solid fa-star"></i>
+                <span><strong>Quản lý File tối ưu:</strong> Giờ đây máy tính học tập của tôi đã sạch sẽ, dễ tìm kiếm tài liệu nhờ cấu trúc thư mục tối ưu ở Bài 1.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-star"></i>
+                <span><strong>Làm chủ Prompt AI:</strong> Tạo ra các sản phẩm học thuật nhanh chóng, chính xác nhờ biết cách biến các mô hình AI thành "người trợ lý" thông thái thay vì chép bài thụ động.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-star"></i>
+                <span><strong>Tư duy Liêm chính:</strong> Rèn luyện được thói quen trích dẫn nguồn rõ ràng và tôn trọng bản quyền sở hữu trí tuệ trên không gian mạng.</span>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Thách thức / Challenges -->
+          <div class="reflection-card challenges reveal">
+            <h3 class="card-title challenge-title">
+              <i class="fa-solid fa-circle-exclamation"></i> Thách thức gặp phải
+            </h3>
+            <ul class="reflection-list">
+              <li>
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span><strong>Quản lý thời gian:</strong> Việc cân bằng giữa học lý thuyết trên lớp và hoàn thiện sản phẩm thực hành đôi khi gây quá tải.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span><strong>Hợp tác nhóm trực tuyến:</strong> Đồng bộ lịch làm việc của nhiều thành viên và kiểm soát tiến độ trên Trello đòi hỏi tính kỷ luật cao.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span><strong>Lọc nhiễu thông tin:</strong> Phải đối mặt với quá nhiều luồng tài liệu học thuật và ý kiến đa chiều trên Internet trước khi tìm được nguồn uy tín.</span>
+              </li>
+            </ul>
+          </div>
+          
+        </div>
+        
+        <!-- Skills Bars -->
+        <div class="skills-container reveal">
+          <h3><i class="fa-solid fa-chart-bar"></i> Kỹ năng đạt được sau môn học</h3>
+          <div class="skills-grid">
+            
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Tin học văn phòng & Quản lý File (Bài 1)</span>
+                <span class="skill-percentage">85%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-width="85%"></div>
+              </div>
+            </div>
+            
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Khai thác & Đánh giá dữ liệu học thuật (Bài 2)</span>
+                <span class="skill-percentage">90%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-width="90%"></div>
+              </div>
+            </div>
+            
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Kỹ nghệ Prompt (Prompt Engineering) (Bài 3)</span>
+                <span class="skill-percentage">95%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-width="95%"></div>
+              </div>
+            </div>
+            
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Quản lý dự án & Cộng tác số (Bài 4)</span>
+                <span class="skill-percentage">88%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-width="88%"></div>
+              </div>
+            </div>
+            
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Thiết kế & Sáng tạo nội dung số (Bài 5)</span>
+                <span class="skill-percentage">80%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-width="80%"></div>
+              </div>
+            </div>
+            
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">An toàn thông tin & Liêm chính học thuật (Bài 6)</span>
+                <span class="skill-percentage">95%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-width="95%"></div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+
+  <!-- FOOTER -->
+  </footer>
+
+  <!-- EXERCISE DETAIL MODAL -->
+  <div id="exercise-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-exercise-title">Bài tập</h2>
+        <button class="modal-close" id="modal-close">&times;</button>
+      </div>
+      
+      <div class="modal-body">
+        <div id="modal-objective-section" class="modal-section">
+          <h3 class="modal-section-title">
+            <i class="fa-solid fa-bullseye"></i> Mục tiêu bài tập
+          </h3>
+          <p id="modal-exercise-objective"></p>
+        </div>
+        
+        <div id="modal-process-section" class="modal-section">
+          <h3 class="modal-section-title">
+            <i class="fa-solid fa-list-check"></i> Tóm tắt quy trình thực hiện
+          </h3>
+          <p id="modal-exercise-process"></p>
+        </div>
+        
+        <div id="modal-pdf-section" class="modal-section">
+          <h3 class="modal-section-title">
+            <i class="fa-solid fa-file-pdf"></i> Tài liệu đính kèm (File PDF báo cáo)
+          </h3>
+          <div id="pdf-info" class="pdf-info-box">
+            <i class="fa-solid fa-info-circle"></i>
+            <span>File PDF tương ứng được tìm kiếm từ đông tại thư mục: <strong id="pdf-file-path"></strong></span>
+          </div>
+          <div id="pdf-fallback-msg" class="pdf-fallback-msg">
+            <p id="pdf-fallback-title">Đang kết nối tài liệu PDF báo cáo...</p>
+          </div>
+          <iframe id="pdf-preview-frame" class="pdf-viewer"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Overlay -->
+  <div id="modal-overlay" class="modal-overlay"></div>
+
+  <!-- Script JS -->
+  <script src="assets/Plant.js"></script>
+  <script src="assets/script.js"></script>
+  
+  <!-- Tab Navigation Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('exercise-modal');
+      const modalCloseBtn = document.getElementById('modal-close');
+      const viewDetailBtns = document.querySelectorAll('.btn-view-detail');
+      
+      // EXERCISES DATA (từ script.js)
+      const EXERCISES_DATA = {
+        1: {
+          title: "Bài 1: Thao tác cơ bản với tệp tin và thư mục",
+          objective: "Thực hành làm quen hệ thống tệp tin, thiết lập cấu trúc cây thư mục và thực hành các thao tác quản trị tệp tin cơ bản trên hệ điều hành Windows để rèn luyện thói quen tổ chức dữ liệu khoa học.",
+          process: `1. <strong>Tạo thư mục làm việc:</strong> Tạo thư mục gốc với cấu trúc tên chuẩn không dấu: <code>ThucHanh_LuuDinhNguyen</code> trên ổ đĩa của máy tính.<br>2. <strong>Thao tác quản lý tệp:</strong> Thực hiện tạo mới tệp <code>GhiChu.txt</code>, đổi tên thành <code>GhiChuQuanTrong.txt</code>, và tạo thư mục con <code>TaiLieu</code> để phân loại.<br>3. <strong>Di chuyển và sao chép:</strong> Áp dụng các lệnh Copy/Paste và Cut/Paste để điều phối các tệp tin vào thư mục con.<br>4. <strong>Quản lý thùng rác:</strong> Thực hành xóa tạm thời, xóa vĩnh viễn tệp tin bằng phím Shift + Delete và khôi phục.`,
+          pdfPath: "assets/Baitap/Bai1.pdf"
+        },
+        2: {
+          title: "Bài 2: Tìm kiếm và đánh giá thông tin học thuật",
+          objective: "Lựa chọn chủ đề nghiên cứu học thuật và thực hành kỹ năng tìm kiếm thông tin bằng toán tử nâng cao, kết hợp đánh giá độ tin cậy của tài nguyên dựa trên mô hình chuẩn CRAAP.",
+          process: `1. <strong>Chủ đề nghiên cứu:</strong> Lựa chọn đề tài liên quan đến chuyên ngành.<br>2. <strong>Khai thác đa dạng nguồn:</strong> Tìm kiếm tài liệu từ 5 loại nguồn khác nhau.<br>3. <strong>Đánh giá tài liệu (CRAAP):</strong> Phân tích độ tin cậy của từng nguồn.<br>4. <strong>Lập danh mục:</strong> Xuất bảng ma trận đánh giá ưu/nhược điểm.`,
+          pdfPath: "assets/Baitap/Bai2.pdf"
+        },
+        3: {
+          title: "Bài 3: Viết Prompt hiệu quả cho các tác vụ học tập",
+          objective: "Làm chủ kỹ nghệ viết câu lệnh (Prompt Engineering) với mô hình ngôn ngữ lớn.",
+          process: `1. <strong>Lựa chọn 3 tác vụ học tập</strong><br>2. <strong>Thử nghiệm các phiên bản Prompt</strong><br>3. <strong>Xây dựng bộ nguyên tắc C.R.E.A.T.E</strong>`,
+          pdfPath: "assets/Baitap/Bai3.pdf"
+        },
+        4: {
+          title: "Bài 4: Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm",
+          objective: "Ứng dụng các công cụ đám mây và phần mềm quản lý công việc.",
+          process: `1. <strong>Chủ đề dự án nhóm</strong><br>2. <strong>Quản lý công việc qua Trello</strong><br>3. <strong>Soạn thảo cộng tác Google Workspace</strong><br>4. <strong>Tương tác nhóm qua Zalo</strong>`,
+          pdfPath: "assets/Baitap/Bai4.pdf"
+        },
+        5: {
+          title: "Bài 5: Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung",
+          objective: "Kết hợp sức mạnh sáng tạo từ nhiều công cụ AI tạo sinh.",
+          process: `1. <strong>Xây dựng bài viết với Google Gemini</strong><br>2. <strong>Sinh ảnh minh họa với Copilot DALL-E 3</strong><br>3. <strong>Dàn trang hoàn chỉnh trên Canva</strong>`,
+          pdfPath: "assets/Baitap/Bai5.pdf"
+        },
+        6: {
+          title: "Bài 6: An toàn và sử dụng AI có trách nhiệm",
+          objective: "Nghiên cứu chính sách sử dụng AI và thiết lập nguyên tắc liêm chính.",
+          process: `1. <strong>Thảo luận ranh giới</strong><br>2. <strong>Thiết lập 7 quy tắc cá nhân</strong><br>3. <strong>Thiết kế Infographic</strong>`,
+          pdfPath: "assets/Baitap/Bai6.pdf"
+        },
+        7: {
+          title: "Bài 7: Phân tích tài liệu với trợ lý nghiên cứu AI",
+          objective: "Rèn luyện kỹ năng sử dụng các công cụ AI như Elicit hoặc Consensus để nhanh chóng tổng quan tài liệu khoa học.",
+          process: `1. <strong>Xác định từ khóa và Tìm kiếm bằng AI</strong><br>2. <strong>Sàng lọc và Lựa chọn tài liệu</strong><br>3. <strong>Trích xuất dữ liệu trọng tâm</strong><br>4. <strong>Tổng hợp dữ liệu và Viết báo cáo</strong>`,
+          pdfPath: "assets/Baitap/Bai7.pdf"
+        }
+      };
+
+      // Function mở modal
+      function openModal(exerciseId) {
+        const data = EXERCISES_DATA[exerciseId];
+        if (!data || !modal) return;
+
+        // Cập nhật nội dung modal
+        document.getElementById('modal-exercise-title').textContent = data.title;
+        document.getElementById('modal-exercise-objective').innerHTML = data.objective;
+        document.getElementById('modal-exercise-process').innerHTML = data.process;
+        document.getElementById('pdf-file-path').textContent = data.pdfPath;
+        
+        // Hiển thị modal
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Thử load PDF
+        const pdfViewer = document.getElementById('pdf-preview-frame');
+        const pdfFallback = document.getElementById('pdf-fallback-msg');
+        if (pdfViewer) {
+          pdfViewer.src = data.pdfPath;
+          pdfFallback.style.display = 'none';
+          pdfViewer.style.display = 'block';
+        }
+      }
+
+      // Bind click trên tất cả "Xem Chi Tiết" buttons
+      viewDetailBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const exerciseId = this.getAttribute('data-id');
+          openModal(parseInt(exerciseId));
+        });
+      });
+
+      // Close modal khi click nút X
+      if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      }
+
+      // Close modal khi click ngoài
+      if (modal) {
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        });
+      }
+
+      // Close modal khi bấm Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+
+      // NAV LINKS HANDLER
+      const navLinks = document.querySelectorAll('.nav-link');
+      const navMenu = document.getElementById('nav-menu');
+      const skillBarFills = document.querySelectorAll('.skill-bar-fill');
+      
+      function animateSkillsProgress() {
+        skillBarFills.forEach(fill => {
+          const widthPercent = fill.getAttribute('data-width');
+          fill.style.width = widthPercent || '0%';
+        });
+      }
+      
+      function resetSkillsProgress() {
+        skillBarFills.forEach(fill => {
+          fill.style.width = '0%';
+        });
+      }
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetSectionId = this.getAttribute('data-target');
+          
+          const sections = document.querySelectorAll('.page-section');
+          sections.forEach(section => {
+            section.classList.remove('active');
+          });
+          
+          navLinks.forEach(navLink => {
+            navLink.classList.remove('active');
+          });
+          
+          const targetSection = document.getElementById(targetSectionId);
+          if (targetSection) {
+            targetSection.classList.add('active');
+          }
+          
+          if (targetSectionId === 'reflection-section') {
+            animateSkillsProgress();
+          } else {
+            resetSkillsProgress();
+          }
+          
+          this.classList.add('active');
+          
+          if (navMenu) {
+            navMenu.classList.remove('active');
+          }
+          document.body.classList.remove('mobile-menu-open');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
