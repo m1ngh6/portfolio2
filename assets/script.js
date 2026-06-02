@@ -14,7 +14,7 @@ const EXERCISES_DATA = {
               2. <strong>Thao tác quản lý tệp:</strong> Thực hiện tạo mới tệp <code>GhiChu.txt</code>, đổi tên thành <code>GhiChuQuanTrong.txt</code>, và tạo thư mục con <code>TaiLieu</code> để phân loại.<br>
               3. <strong>Di chuyển và sao chép:</strong> Áp dụng các lệnh Copy/Paste và Cut/Paste để điều phối các tệp tin (bao gồm tệp <code>DiChuyen.txt</code>) vào thư mục con.<br>
               4. <strong>Quản lý thùng rác:</strong> Thực hành xóa tạm thời, xóa vĩnh viễn tệp tin bằng phím Shift + Delete và khôi phục (Restore) tệp tin từ Recycle Bin về vị trí ban đầu.`,
-    pdfPath: "assets/Baitap/Bai1.pdf"
+    pdfPath: "assets/BaiTap/Bai1.pdf"
   },
   2: {
     title: "Bài 2: Tìm kiếm và đánh giá thông tin học thuật",
@@ -23,7 +23,7 @@ const EXERCISES_DATA = {
               2. <strong>Khai thác đa dạng nguồn:</strong> Tìm kiếm tài liệu từ 5 loại nguồn khác nhau (cơ sở dữ liệu học thuật Google Scholar, tạp chí khoa học chuyên ngành, sách chuyên khảo, báo cáo ngành McKinsey/Statista, và các nguồn tin tức mở). Thu thập tổng cộng 11 tài liệu tham khảo chất lượng.<br>
               3. <strong>Đánh giá tài liệu (CRAAP):</strong> Phân tích độ tin cậy của từng nguồn dựa trên 5 khía cạnh: Currency (Cập nhật), Relevance (Phù hợp), Authority (Thẩm quyền), Accuracy (Chính xác), và Purpose (Mục đích).<br>
               4. <strong>Lập danh mục:</strong> Xuất bảng ma trận đánh giá ưu/nhược điểm và lập danh mục tài liệu tham khảo theo định dạng chuẩn Harvard.`,
-    pdfPath: "assets/Baitap/Bai2.pdf"
+    pdfPath: "assets/BaiTap/Bai2.pdf"
   },
   3: {
     title: "Bài 3: Viết Prompt hiệu quả cho các tác vụ học tập",
@@ -31,7 +31,7 @@ const EXERCISES_DATA = {
     process: `1. <strong>Lựa chọn 3 tác vụ học tập:</strong> Thiết lập thử nghiệm cho 3 bài toán: Tóm tắt tài liệu học thuật về AI; Giải thích khái niệm phức tạp (Thuyết tương đối rộng); Thiết lập bộ câu hỏi ôn tập Lịch sử Thế chiến 2.<br>
               2. <strong>Thử nghiệm các phiên bản Prompt:</strong> Đối chiếu kết quả trả về từ mô hình ChatGPT-4o giữa các cấp độ câu lệnh: Cơ bản (thô), Cải tiến (có cấu trúc ngắn), và Nâng cao (sử dụng kỹ thuật đóng vai Role-playing, chuỗi suy nghĩ Chain-of-Thought (CoT), phép ẩn dụ so sánh, và phân loại theo thang Bloom).<br>
               3. <strong>Xây dựng bộ nguyên tắc C.R.E.A.T.E:</strong> Tổng hợp quy trình viết Prompt tối ưu gồm 6 chữ vàng: Context (Bối cảnh), Role (Vai trò), Evidence/Examples (Ví dụ), Action (Hành động), Target (Đối tượng), và Evaluation (Đánh giá).`,
-    pdfPath: "assets/Baitap/Bai3.pdf"
+    pdfPath: "assets/BaiTap/Bai3.pdf"
   },
   4: {
     title: "Bài 4: Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm",
@@ -40,7 +40,7 @@ const EXERCISES_DATA = {
               2. <strong>Quản lý công việc qua Trello:</strong> Sử dụng bảng Kanban để phân rã nhiệm vụ và gán trạng thái (To-do, Doing, Done). Tối ưu hóa phân loại bằng hệ thống nhãn màu (Label) ưu tiên và thiết lập Due Date.<br>
               3. <strong>Soạn thảo cộng tác Google Workspace:</strong> Sử dụng Google Docs/Sheets ở chế độ "Đề xuất" (Suggesting mode) và quản lý lịch sử phiên bản để tránh xung đột nội dung. Đồng bộ tài nguyên dùng chung trên Google Drive.<br>
               4. <strong>Tương tác nhóm qua Messenger:</strong> Thiết lập kênh trao đổi thông tin khẩn cấp, sử dụng tính năng ghim tin nhắn và liên kết trực tiếp với thẻ Trello để theo dõi công việc không bị trôi thông báo.`,
-    pdfPath: "assets/Baitap/Bai4.pdf"
+    pdfPath: "assets/BaiTap/Bai4.pdf"
   },
   5: {
     title: "Bài 5: Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung",
@@ -49,7 +49,7 @@ const EXERCISES_DATA = {
               2. <strong>Sinh ảnh minh họa với Copilot DALL-E 3:</strong> Viết prompt mô tả chi tiết để sinh ảnh hoạt hình 3D về một sinh viên Việt Nam học tập bên cạnh một robot phát sáng thân thiện. Sử dụng Canva để xử lý hậu kỳ và chèn chữ.<br>
               3. <strong>Dàn trang hoàn chỉnh trên Canva:</strong> Thiết kế bố cục bài blog bằng cách sử dụng các khối màu phủ mờ (Gradient overlay), chèn font Montserrat & Lora hiện đại, tạo nên ấn phẩm hoàn thiện bắt mắt.<br>
               4. <strong>Phân tích vai trò AI:</strong> Đánh giá ưu nhược điểm của chuỗi công cụ khép kín: Gemini làm "não bộ", Copilot làm "họa sĩ" và Canva làm "nhà xuất bản".`,
-    pdfPath: "assets/Baitap/Bai5.pdf"
+    pdfPath: "assets/BaiTap/Bai5.pdf"
   },
   6: {
     title: "Bài 6: Sử dụng AI có trách nhiệm trong học tập và nghiên cứu",
@@ -58,7 +58,7 @@ const EXERCISES_DATA = {
               2. <strong>Thực hành bài luận mẫu có kiểm soát:</strong> Lập dàn ý bài luận Xã hội học chủ đề: <em>"Tác động của xu hướng Thời trang nhanh (Fast Fashion) đối với Gen Z tại Việt Nam"</em>. Sử dụng AI hỗ trợ khung và chủ động viết lại, bổ sung ví dụ TikTok Shop/Shopee thực tế, trích dẫn rõ nguồn gốc theo chuẩn APA.<br>
               3. <strong>Xây dựng Bộ 7 nguyên tắc đạo đức cá nhân:</strong> Thiết lập hệ nguyên tắc ứng xử với AI (bao gồm: Tư duy trước AI sau, Bảo mật thông tin, Trích dẫn 100%, v.v.).<br>
               4. <strong>Thiết kế Infographic tuyên truyền:</strong> Sử dụng Canva vẽ infographic chủ đề: <em>"Sử dụng AI trong học thuật: Ranh giới giữa Trợ thủ và Kẻ gian lận"</em> để làm rõ các điều Nên làm (DOs) và Không nên làm (DON'Ts).`,
-    pdfPath: "assets/Baitap/Bai6.pdf"
+    pdfPath: "assets/BaiTap/Bai6.pdf"
   },
   7: {
     title: "Bài 7: Phân tích tài liệu với trợ lý nghiên cứu AI",
@@ -67,7 +67,7 @@ const EXERCISES_DATA = {
               2. <strong>Sàng lọc và Lựa chọn tài liệu</strong><br>
               3. <strong>Trích xuất dữ liệu trọng tâm</strong><br>
               4. <strong>Tổng hợp dữ liệu và Viết báo cáo</strong>`,
-    pdfPath: "assets/Baitap/Bai7.pdf"
+    pdfPath: "assets/BaiTap/Bai7.pdf"
   }
 };
 
