@@ -59,15 +59,6 @@ const EXERCISES_DATA = {
               3. <strong>Xây dựng Bộ 7 nguyên tắc đạo đức cá nhân:</strong> Thiết lập hệ nguyên tắc ứng xử với AI (bao gồm: Tư duy trước AI sau, Bảo mật thông tin, Trích dẫn 100%, v.v.).<br>
               4. <strong>Thiết kế Infographic tuyên truyền:</strong> Sử dụng Canva vẽ infographic chủ đề: <em>"Sử dụng AI trong học thuật: Ranh giới giữa Trợ thủ và Kẻ gian lận"</em> để làm rõ các điều Nên làm (DOs) và Không nên làm (DON'Ts).`,
     pdfPath: "assets/BaiTap/Bai6.pdf"
-  },
-  7: {
-    title: "Bài 7: Phân tích tài liệu với trợ lý nghiên cứu AI",
-    objective: "Rèn luyện kỹ năng sử dụng các công cụ AI như Elicit hoặc Consensus để nhanh chóng tổng quan tài liệu khoa học",
-    process: `1. <strong>Xác định từ khóa và Tìm kiếm bằng AI</strong><br>
-              2. <strong>Sàng lọc và Lựa chọn tài liệu</strong><br>
-              3. <strong>Trích xuất dữ liệu trọng tâm</strong><br>
-              4. <strong>Tổng hợp dữ liệu và Viết báo cáo</strong>`,
-    pdfPath: "assets/BaiTap/Bai7.pdf"
   }
 };
 
